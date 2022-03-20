@@ -13083,7 +13083,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[28]:</div>
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#read csv</span>
@@ -13102,7 +13102,7 @@ div#notebook {
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[28]:</div>
+    <div class="prompt output_prompt">Out[2]:</div>
 
 
 
@@ -13290,7 +13290,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[29]:</div>
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">features</span> <span class="o">=</span> <span class="n">features</span><span class="p">[[</span><span class="s2">&quot;Departure_FRA&quot;</span><span class="p">,</span> <span class="s2">&quot;Departure_STN&quot;</span><span class="p">,</span> <span class="s2">&quot;Departure_SXF&quot;</span><span class="p">,</span> <span class="s2">&quot;Destination_FRA&quot;</span><span class="p">,</span> <span class="s2">&quot;Destination_STN&quot;</span><span class="p">,</span> <span class="s2">&quot;Destination_SXF&quot;</span><span class="p">,</span> <span class="s2">&quot;Price_Dev_Cat_Falling&quot;</span><span class="p">,</span> 
@@ -13361,15 +13361,15 @@ memory usage: 17.9 MB
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[30]:</div>
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
-<span class="c1"># Labels are the values we want to predict</span>
+<span class="c1"># Save labels in y</span>
 <span class="n">y</span> <span class="o">=</span> <span class="n">features</span><span class="p">[</span><span class="s1">&#39;buy&#39;</span><span class="p">]</span>
 
-<span class="c1"># Remove labels from feature table</span>
+<span class="c1"># remove labels from the features dataset</span>
 <span class="n">features</span> <span class="o">=</span> <span class="n">features</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;buy&#39;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 </pre></div>
 
@@ -13451,10 +13451,10 @@ memory usage: 17.2 MB
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[32]:</div>
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Create Training and Test Sets</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># split the dataset into training and test sets</span>
 <span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
 
 <span class="n">trainX</span><span class="p">,</span> <span class="n">testX</span><span class="p">,</span> <span class="n">trainY</span><span class="p">,</span> <span class="n">testY</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">features</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span> <span class="mf">0.25</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">stratify</span><span class="o">=</span><span class="n">y</span><span class="p">)</span>
@@ -13475,10 +13475,10 @@ memory usage: 17.2 MB
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[12]:</div>
+<div class="prompt input_prompt">In&nbsp;[10]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># reduced featured space to 18 with PCA</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># reduced feature space to 18 with PCA</span>
 <span class="kn">from</span> <span class="nn">sklearn.decomposition</span> <span class="kn">import</span> <span class="n">PCA</span>
 <span class="n">pca2</span> <span class="o">=</span> <span class="n">PCA</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
 <span class="n">pca2</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">trainX</span><span class="p">)</span>
@@ -13561,7 +13561,7 @@ Testing Labels Shape: (20906,)
 <div class="prompt input_prompt">In&nbsp;[6]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Import the model we are using</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># import the RandomForestClassifier library</span>
 <span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">RandomForestClassifier</span>
 <span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">accuracy_score</span><span class="p">,</span> <span class="n">confusion_matrix</span><span class="p">,</span> <span class="n">classification_report</span>
 <span class="c1"># Instantiate model with 1000 decision trees</span>
@@ -13575,10 +13575,10 @@ Testing Labels Shape: (20906,)
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[9]:</div>
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Train the model on training data</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># fit model to the training data and save the predicted labels into testY_pred</span>
 <span class="n">rfc</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">trainX</span><span class="p">,</span> <span class="n">trainY</span><span class="p">)</span>
 <span class="n">testY_pred</span> <span class="o">=</span> <span class="n">rfc</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">testX</span><span class="p">)</span>
 </pre></div>
@@ -13590,10 +13590,11 @@ Testing Labels Shape: (20906,)
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[10]:</div>
+<div class="prompt input_prompt">In&nbsp;[8]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">accuracy_score</span><span class="p">(</span><span class="n">testY_pred</span><span class="p">,</span> <span class="n">testY</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#print the accuracy score</span>
+<span class="n">accuracy_score</span><span class="p">(</span><span class="n">testY_pred</span><span class="p">,</span> <span class="n">testY</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -13606,7 +13607,7 @@ Testing Labels Shape: (20906,)
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[10]:</div>
+    <div class="prompt output_prompt">Out[8]:</div>
 
 
 
@@ -13623,10 +13624,11 @@ Testing Labels Shape: (20906,)
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[11]:</div>
+<div class="prompt input_prompt">In&nbsp;[9]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">classification_report</span><span class="p">(</span><span class="n">testY_pred</span><span class="p">,</span> <span class="n">testY</span><span class="p">))</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># print the classification report</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">classification_report</span><span class="p">(</span><span class="n">testY</span><span class="p">,</span> <span class="n">testY_pred</span><span class="p">))</span>
 </pre></div>
 
     </div>
@@ -13645,12 +13647,12 @@ Testing Labels Shape: (20906,)
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>              precision    recall  f1-score   support
 
-           0       0.97      0.90      0.94     17570
-           1       0.62      0.87      0.73      3336
+           0       0.90      0.97      0.94     16227
+           1       0.87      0.62      0.73      4679
 
     accuracy                           0.90     20906
-   macro avg       0.80      0.89      0.83     20906
-weighted avg       0.92      0.90      0.90     20906
+   macro avg       0.89      0.80      0.83     20906
+weighted avg       0.89      0.90      0.89     20906
 
 </pre>
 </div>
@@ -13660,9 +13662,17 @@ weighted avg       0.92      0.90      0.90     20906
 </div>
 
 </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The model is already delivering relatively good results.</p>
+
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[13]:</div>
+<div class="prompt input_prompt">In&nbsp;[11]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">rfc</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">trainX_reduced</span><span class="p">,</span> <span class="n">trainY</span><span class="p">)</span>
@@ -13676,7 +13686,7 @@ weighted avg       0.92      0.90      0.90     20906
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[14]:</div>
+<div class="prompt input_prompt">In&nbsp;[12]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">accuracy_score</span><span class="p">(</span><span class="n">testY_pred_reduced</span><span class="p">,</span> <span class="n">testY</span><span class="p">)</span>
@@ -13692,7 +13702,7 @@ weighted avg       0.92      0.90      0.90     20906
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[14]:</div>
+    <div class="prompt output_prompt">Out[12]:</div>
 
 
 
@@ -13709,10 +13719,10 @@ weighted avg       0.92      0.90      0.90     20906
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[15]:</div>
+<div class="prompt input_prompt">In&nbsp;[13]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">classification_report</span><span class="p">(</span><span class="n">testY_pred_reduced</span><span class="p">,</span> <span class="n">testY</span><span class="p">))</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">classification_report</span><span class="p">(</span><span class="n">testY</span><span class="p">,</span> <span class="n">testY_pred_reduced</span><span class="p">))</span>
 </pre></div>
 
     </div>
@@ -13731,12 +13741,12 @@ weighted avg       0.92      0.90      0.90     20906
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>              precision    recall  f1-score   support
 
-           0       0.97      0.89      0.93     17664
-           1       0.59      0.85      0.70      3242
+           0       0.89      0.97      0.93     16227
+           1       0.85      0.59      0.70      4679
 
     accuracy                           0.89     20906
-   macro avg       0.78      0.87      0.81     20906
-weighted avg       0.91      0.89      0.89     20906
+   macro avg       0.87      0.78      0.81     20906
+weighted avg       0.88      0.89      0.88     20906
 
 </pre>
 </div>
@@ -13749,7 +13759,7 @@ weighted avg       0.91      0.89      0.89     20906
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Execution time and precision got worse with less features.</p>
+<p>Execution time and precision got worse with the reduced dataset.</p>
 
 </div>
 </div>
@@ -13761,81 +13771,36 @@ weighted avg       0.91      0.89      0.89     20906
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[15]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">pprint</span> <span class="kn">import</span> <span class="n">pprint</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Parameters currently in use:</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
-<span class="n">pprint</span><span class="p">(</span><span class="n">rfc</span><span class="o">.</span><span class="n">get_params</span><span class="p">())</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>Parameters currently in use:
-
-{&#39;bootstrap&#39;: True,
- &#39;ccp_alpha&#39;: 0.0,
- &#39;class_weight&#39;: None,
- &#39;criterion&#39;: &#39;gini&#39;,
- &#39;max_depth&#39;: None,
- &#39;max_features&#39;: &#39;auto&#39;,
- &#39;max_leaf_nodes&#39;: None,
- &#39;max_samples&#39;: None,
- &#39;min_impurity_decrease&#39;: 0.0,
- &#39;min_samples_leaf&#39;: 1,
- &#39;min_samples_split&#39;: 2,
- &#39;min_weight_fraction_leaf&#39;: 0.0,
- &#39;n_estimators&#39;: 1000,
- &#39;n_jobs&#39;: None,
- &#39;oob_score&#39;: False,
- &#39;random_state&#39;: 42,
- &#39;verbose&#39;: 0,
- &#39;warm_start&#39;: False}
-</pre>
-</div>
-</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>I use RandomizedSearchCV and GridSearchCV for hyperparameter tuning. To narrow down which values we should consider for GridSearchCV, I use RandomizedSearchCV. Random Search CV iterates over a grid of random parameters. After execution, the parameters achieving the best accuracy can be printed out.</p>
 
 </div>
 </div>
-
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Random-Search-CV">Random Search CV<a class="anchor-link" href="#Random-Search-CV">&#182;</a></h3>
+</div>
+</div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[14]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">RandomizedSearchCV</span>
 
-<span class="c1"># Number of trees in random forest</span>
 <span class="n">n_estimators</span> <span class="o">=</span> <span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">start</span> <span class="o">=</span> <span class="mi">200</span><span class="p">,</span> <span class="n">stop</span> <span class="o">=</span> <span class="mi">2000</span><span class="p">,</span> <span class="n">num</span> <span class="o">=</span> <span class="mi">10</span><span class="p">)]</span>
-<span class="c1"># Number of features to consider at every split</span>
 <span class="n">max_features</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;auto&#39;</span><span class="p">,</span> <span class="s1">&#39;sqrt&#39;</span><span class="p">]</span>
-<span class="c1"># Maximum number of levels in tree</span>
 <span class="n">max_depth</span> <span class="o">=</span> <span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">110</span><span class="p">,</span> <span class="n">num</span> <span class="o">=</span> <span class="mi">11</span><span class="p">)]</span>
 <span class="n">max_depth</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
-<span class="c1"># Minimum number of samples required to split a node</span>
 <span class="n">min_samples_split</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">]</span>
-<span class="c1"># Minimum number of samples required at each leaf node</span>
 <span class="n">min_samples_leaf</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
-<span class="c1"># Method of selecting samples for training each tree</span>
 <span class="n">bootstrap</span> <span class="o">=</span> <span class="p">[</span><span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">]</span>
 
-<span class="c1"># Create the random grid</span>
 <span class="n">random_grid</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;n_estimators&#39;</span><span class="p">:</span> <span class="n">n_estimators</span><span class="p">,</span>
                <span class="s1">&#39;max_features&#39;</span><span class="p">:</span> <span class="n">max_features</span><span class="p">,</span>
                <span class="s1">&#39;max_depth&#39;</span><span class="p">:</span> <span class="n">max_depth</span><span class="p">,</span>
@@ -13843,7 +13808,7 @@ weighted avg       0.91      0.89      0.89     20906
                <span class="s1">&#39;min_samples_leaf&#39;</span><span class="p">:</span> <span class="n">min_samples_leaf</span><span class="p">,</span>
                <span class="s1">&#39;bootstrap&#39;</span><span class="p">:</span> <span class="n">bootstrap</span><span class="p">}</span>
 
-<span class="n">pprint</span><span class="p">(</span><span class="n">random_grid</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">random_grid</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -13860,12 +13825,7 @@ weighted avg       0.91      0.89      0.89     20906
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>{&#39;bootstrap&#39;: [True, False],
- &#39;max_depth&#39;: [10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, None],
- &#39;max_features&#39;: [&#39;auto&#39;, &#39;sqrt&#39;],
- &#39;min_samples_leaf&#39;: [1, 2, 4],
- &#39;min_samples_split&#39;: [2, 5, 10],
- &#39;n_estimators&#39;: [200, 400, 600, 800, 1000, 1200, 1400, 1600, 1800, 2000]}
+<pre>{&#39;n_estimators&#39;: [200, 400, 600, 800, 1000, 1200, 1400, 1600, 1800, 2000], &#39;max_features&#39;: [&#39;auto&#39;, &#39;sqrt&#39;], &#39;max_depth&#39;: [10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, None], &#39;min_samples_split&#39;: [2, 5, 10], &#39;min_samples_leaf&#39;: [1, 2, 4], &#39;bootstrap&#39;: [True, False]}
 </pre>
 </div>
 </div>
@@ -14277,982 +14237,6 @@ weighted avg       0.91      0.89      0.89     20906
 <div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">rfc_random</span><span class="o">.</span><span class="n">cv_results_</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt output_prompt">Out[&nbsp;]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>{&#39;mean_fit_time&#39;: array([ 24.82736818,  78.589475  ,  64.46673306, 172.65908583,
-         62.85650675,  66.70750356,  88.86899598,  54.08206256,
-         92.1267705 ,  96.75259884,  22.81194258,  73.05169996,
-        106.18610128,  84.82907391,  68.27230128, 151.59677259,
-         52.75051252,  61.25120656, 154.27152276,  36.57026656,
-        160.09648919, 144.50635457,  79.65210907, 110.71486886,
-        125.82838972,  36.91304954, 131.09634948,  58.65374859,
-        165.56900628,  70.29079366,  96.97087399,  70.61245449,
-         72.62730797,  45.83159773, 105.14994899,  66.0689559 ,
-         70.34583147,  50.64591567,  47.21063368,  61.33855192,
-          7.86721381,  34.93774772,  45.54879411,  22.28815913,
-         17.28596775,  63.35140149, 123.59110665,  32.69841838,
-         99.43994228,  52.33062331, 157.02055248, 170.70942593,
-         82.1840016 ,  82.14970954, 123.06727823,  49.85850994,
-         61.82590652, 109.52588646,  87.82350294,  79.52571313,
-         12.49682728,  15.55991332,  81.48743431, 101.25125504,
-         91.66989422,  93.455386  ,  96.68400566,  85.35575183,
-         86.94063536, 172.40854843, 116.08828982,  65.18356069,
-        107.54811144,  35.96350408,  98.6244808 ,  33.62454796,
-         93.77267067, 124.95967913,  39.02951074,  11.38658555,
-        168.61845692,  34.97383746,  57.12116607,  68.1922218 ,
-         67.15550001,  52.50119464,  24.57965787,  91.71561623,
-         44.74144753,  38.80996235,  35.13428235, 167.0677731 ,
-         49.21072149,  34.17268769,  50.12553422,  34.28066381,
-         53.82784311,  16.59087555, 117.16740767, 114.61312032]),
- &#39;mean_score_time&#39;: array([ 2.03371239,  5.41089177,  3.32707183, 10.03734859,  4.25884167,
-         3.98662059,  5.45401351,  3.37185033,  5.96637146,  4.84662263,
-         1.85868541,  4.41966979,  5.32950354,  4.36752987,  4.08759721,
-         9.07652195,  3.27881559,  5.01735036,  9.18266066,  2.99885742,
-         9.25587432,  8.86130428,  6.44338393,  8.91516598,  7.71016105,
-         2.40181979,  8.30110987,  4.79618708,  9.90386589,  5.62288539,
-         5.60143463,  4.38781913,  4.40047876,  3.71200601,  8.46447905,
-         3.9068319 ,  5.63107936,  4.30711325,  3.89754256,  5.11594017,
-         0.54796402,  2.8906649 ,  3.71032548,  1.83824881,  1.06545345,
-         5.31991998, 10.01636569,  1.95252387,  5.96943092,  3.1819121 ,
-         9.37572281, 10.15873861,  4.86928995,  5.0438327 ,  7.60309895,
-         2.95935909,  4.31337929,  8.87543646,  7.37924139,  6.50506703,
-         1.03672314,  1.06300942,  4.89024011,  6.0810109 ,  7.29194832,
-         7.53328729,  4.91338293,  7.0178775 ,  5.26325043, 10.27346977,
-         7.11316792,  3.91609287,  8.86604873,  2.23203452,  7.994766  ,
-         1.99422622,  7.74048392, 10.2049636 ,  2.64983861,  0.94093164,
-        10.10652343,  2.93690038,  4.81171258,  4.15659157,  3.9876469 ,
-         3.1426007 ,  2.01897637,  7.50713491,  3.63102253,  2.63690082,
-         2.92335693, 10.01114464,  4.06672064,  2.75271781,  3.04135434,
-         2.08061115,  2.69573657,  1.04256932,  9.61147483,  9.42406392]),
- &#39;mean_test_score&#39;: array([0.88118244, 0.83768615, 0.83827609, 0.87753117, 0.83709621,
-        0.87831245, 0.88712969, 0.89130712, 0.89385822, 0.83774993,
-        0.86547722, 0.89116362, 0.83782965, 0.83790937, 0.88234638,
-        0.878153  , 0.88759208, 0.87813706, 0.88245799, 0.88132594,
-        0.88523231, 0.8910839 , 0.86684843, 0.8780095 , 0.89109984,
-        0.89376256, 0.89385822, 0.87134475, 0.87694123, 0.8727638 ,
-        0.87297108, 0.88834146, 0.89089257, 0.86480755, 0.86684843,
-        0.87681367, 0.87129692, 0.88587009, 0.8766064 , 0.87770656,
-        0.83731943, 0.87053159, 0.86611499, 0.86530183, 0.88677892,
-        0.88649192, 0.87729201, 0.87711662, 0.87791384, 0.88800663,
-        0.88476992, 0.88244204, 0.87713256, 0.87826461, 0.88743263,
-        0.87813706, 0.83781371, 0.87694123, 0.88617303, 0.87061131,
-        0.88513664, 0.83720782, 0.87657451, 0.88260149, 0.86908065,
-        0.87096208, 0.8375586 , 0.87761089, 0.88535986, 0.88274499,
-        0.87804139, 0.87380018, 0.87665423, 0.89095634, 0.88177238,
-        0.88269715, 0.87373641, 0.88145349, 0.8375586 , 0.86603527,
-        0.87792978, 0.87029242, 0.86635416, 0.88282471, 0.87781817,
-        0.88545553, 0.88097516, 0.8663701 , 0.86525399, 0.83747887,
-        0.87360885, 0.878153  , 0.88162888, 0.86656143, 0.87759495,
-        0.88233043, 0.83819637, 0.87770656, 0.87222169, 0.87059536]),
- &#39;param_bootstrap&#39;: masked_array(data=[True, True, False, False, True, False, False, False,
-                    False, False, True, False, False, False, False, False,
-                    False, True, False, True, False, False, True, True,
-                    False, False, False, True, False, True, False, False,
-                    False, True, True, False, True, True, True, True, True,
-                    True, True, True, False, True, True, False, False,
-                    False, False, False, False, False, False, False, True,
-                    True, True, True, True, True, False, False, True, True,
-                    False, True, False, False, False, False, True, False,
-                    True, False, True, True, True, True, False, True, True,
-                    False, False, False, True, True, True, True, True,
-                    False, True, True, False, False, False, False, True,
-                    True],
-              mask=[False, False, False, False, False, False, False, False,
-                    False, False, False, False, False, False, False, False,
-                    False, False, False, False, False, False, False, False,
-                    False, False, False, False, False, False, False, False,
-                    False, False, False, False, False, False, False, False,
-                    False, False, False, False, False, False, False, False,
-                    False, False, False, False, False, False, False, False,
-                    False, False, False, False, False, False, False, False,
-                    False, False, False, False, False, False, False, False,
-                    False, False, False, False, False, False, False, False,
-                    False, False, False, False, False, False, False, False,
-                    False, False, False, False, False, False, False, False,
-                    False, False, False, False],
-        fill_value=&#39;?&#39;,
-             dtype=object),
- &#39;param_max_depth&#39;: masked_array(data=[30, 10, 10, 30, 10, 30, 100, 60, 50, 10, 70, 90, 10,
-                    10, 30, 50, 70, 20, 110, 80, 30, 70, 80, None, 80,
-                    None, 40, 20, 100, 20, 20, 50, 100, 50, 90, 20, 20,
-                    100, None, 60, 10, 60, 90, 90, 90, 110, 90, 80, 70,
-                    110, 20, 50, 50, 30, None, 60, 10, 80, 100, 80, 50, 10,
-                    80, None, 20, None, 10, 70, 80, 60, 80, 20, 60, 90, 90,
-                    90, None, 100, 10, 80, 60, 100, 100, None, 70, 40, 100,
-                    80, 100, 10, 110, None, 40, 40, 30, 40, 10, 100, 20,
-                    40],
-              mask=[False, False, False, False, False, False, False, False,
-                    False, False, False, False, False, False, False, False,
-                    False, False, False, False, False, False, False, False,
-                    False, False, False, False, False, False, False, False,
-                    False, False, False, False, False, False, False, False,
-                    False, False, False, False, False, False, False, False,
-                    False, False, False, False, False, False, False, False,
-                    False, False, False, False, False, False, False, False,
-                    False, False, False, False, False, False, False, False,
-                    False, False, False, False, False, False, False, False,
-                    False, False, False, False, False, False, False, False,
-                    False, False, False, False, False, False, False, False,
-                    False, False, False, False],
-        fill_value=&#39;?&#39;,
-             dtype=object),
- &#39;param_max_features&#39;: masked_array(data=[&#39;sqrt&#39;, &#39;sqrt&#39;, &#39;sqrt&#39;, &#39;auto&#39;, &#39;sqrt&#39;, &#39;sqrt&#39;, &#39;sqrt&#39;,
-                    &#39;sqrt&#39;, &#39;auto&#39;, &#39;auto&#39;, &#39;auto&#39;, &#39;sqrt&#39;, &#39;sqrt&#39;, &#39;sqrt&#39;,
-                    &#39;sqrt&#39;, &#39;auto&#39;, &#39;auto&#39;, &#39;sqrt&#39;, &#39;auto&#39;, &#39;auto&#39;, &#39;sqrt&#39;,
-                    &#39;sqrt&#39;, &#39;sqrt&#39;, &#39;auto&#39;, &#39;sqrt&#39;, &#39;sqrt&#39;, &#39;auto&#39;, &#39;sqrt&#39;,
-                    &#39;auto&#39;, &#39;sqrt&#39;, &#39;sqrt&#39;, &#39;sqrt&#39;, &#39;sqrt&#39;, &#39;sqrt&#39;, &#39;sqrt&#39;,
-                    &#39;sqrt&#39;, &#39;sqrt&#39;, &#39;auto&#39;, &#39;auto&#39;, &#39;sqrt&#39;, &#39;auto&#39;, &#39;sqrt&#39;,
-                    &#39;sqrt&#39;, &#39;sqrt&#39;, &#39;auto&#39;, &#39;sqrt&#39;, &#39;auto&#39;, &#39;sqrt&#39;, &#39;sqrt&#39;,
-                    &#39;sqrt&#39;, &#39;auto&#39;, &#39;auto&#39;, &#39;auto&#39;, &#39;auto&#39;, &#39;sqrt&#39;, &#39;sqrt&#39;,
-                    &#39;auto&#39;, &#39;auto&#39;, &#39;auto&#39;, &#39;sqrt&#39;, &#39;sqrt&#39;, &#39;sqrt&#39;, &#39;auto&#39;,
-                    &#39;auto&#39;, &#39;sqrt&#39;, &#39;auto&#39;, &#39;auto&#39;, &#39;auto&#39;, &#39;sqrt&#39;, &#39;auto&#39;,
-                    &#39;sqrt&#39;, &#39;sqrt&#39;, &#39;sqrt&#39;, &#39;auto&#39;, &#39;auto&#39;, &#39;sqrt&#39;, &#39;sqrt&#39;,
-                    &#39;sqrt&#39;, &#39;sqrt&#39;, &#39;auto&#39;, &#39;auto&#39;, &#39;auto&#39;, &#39;auto&#39;, &#39;auto&#39;,
-                    &#39;sqrt&#39;, &#39;sqrt&#39;, &#39;sqrt&#39;, &#39;sqrt&#39;, &#39;sqrt&#39;, &#39;sqrt&#39;, &#39;sqrt&#39;,
-                    &#39;sqrt&#39;, &#39;sqrt&#39;, &#39;auto&#39;, &#39;sqrt&#39;, &#39;auto&#39;, &#39;auto&#39;, &#39;auto&#39;,
-                    &#39;sqrt&#39;, &#39;auto&#39;],
-              mask=[False, False, False, False, False, False, False, False,
-                    False, False, False, False, False, False, False, False,
-                    False, False, False, False, False, False, False, False,
-                    False, False, False, False, False, False, False, False,
-                    False, False, False, False, False, False, False, False,
-                    False, False, False, False, False, False, False, False,
-                    False, False, False, False, False, False, False, False,
-                    False, False, False, False, False, False, False, False,
-                    False, False, False, False, False, False, False, False,
-                    False, False, False, False, False, False, False, False,
-                    False, False, False, False, False, False, False, False,
-                    False, False, False, False, False, False, False, False,
-                    False, False, False, False],
-        fill_value=&#39;?&#39;,
-             dtype=object),
- &#39;param_min_samples_leaf&#39;: masked_array(data=[1, 1, 2, 4, 4, 4, 2, 1, 1, 4, 4, 1, 1, 2, 2, 4, 2, 1,
-                    2, 1, 1, 1, 4, 2, 1, 1, 1, 2, 4, 2, 4, 2, 1, 4, 4, 2,
-                    2, 1, 2, 2, 4, 2, 4, 4, 2, 1, 2, 4, 4, 2, 1, 2, 4, 4,
-                    2, 4, 1, 2, 1, 2, 1, 4, 4, 2, 1, 2, 4, 2, 1, 2, 4, 4,
-                    2, 1, 1, 2, 1, 1, 2, 4, 4, 2, 4, 2, 4, 1, 1, 4, 4, 2,
-                    1, 4, 1, 4, 4, 2, 1, 4, 2, 2],
-              mask=[False, False, False, False, False, False, False, False,
-                    False, False, False, False, False, False, False, False,
-                    False, False, False, False, False, False, False, False,
-                    False, False, False, False, False, False, False, False,
-                    False, False, False, False, False, False, False, False,
-                    False, False, False, False, False, False, False, False,
-                    False, False, False, False, False, False, False, False,
-                    False, False, False, False, False, False, False, False,
-                    False, False, False, False, False, False, False, False,
-                    False, False, False, False, False, False, False, False,
-                    False, False, False, False, False, False, False, False,
-                    False, False, False, False, False, False, False, False,
-                    False, False, False, False],
-        fill_value=&#39;?&#39;,
-             dtype=object),
- &#39;param_min_samples_split&#39;: masked_array(data=[5, 5, 5, 2, 2, 5, 5, 5, 2, 5, 10, 5, 10, 5, 10, 2, 5,
-                    2, 10, 5, 10, 5, 5, 2, 5, 2, 2, 5, 10, 2, 10, 2, 5, 10,
-                    2, 10, 5, 2, 5, 2, 5, 10, 2, 10, 5, 2, 2, 10, 2, 2, 2,
-                    10, 10, 5, 5, 2, 5, 2, 2, 10, 2, 2, 10, 10, 10, 10, 2,
-                    2, 10, 10, 2, 2, 5, 5, 5, 10, 10, 5, 5, 5, 2, 10, 5,
-                    10, 5, 10, 5, 2, 10, 10, 10, 5, 5, 2, 2, 10, 2, 5, 2,
-                    10],
-              mask=[False, False, False, False, False, False, False, False,
-                    False, False, False, False, False, False, False, False,
-                    False, False, False, False, False, False, False, False,
-                    False, False, False, False, False, False, False, False,
-                    False, False, False, False, False, False, False, False,
-                    False, False, False, False, False, False, False, False,
-                    False, False, False, False, False, False, False, False,
-                    False, False, False, False, False, False, False, False,
-                    False, False, False, False, False, False, False, False,
-                    False, False, False, False, False, False, False, False,
-                    False, False, False, False, False, False, False, False,
-                    False, False, False, False, False, False, False, False,
-                    False, False, False, False],
-        fill_value=&#39;?&#39;,
-             dtype=object),
- &#39;param_n_estimators&#39;: masked_array(data=[400, 2000, 1200, 2000, 1600, 800, 1000, 600, 1000,
-                    1800, 400, 800, 2000, 1600, 800, 1800, 600, 1000, 1800,
-                    600, 1800, 1600, 1400, 1800, 1400, 400, 1400, 1000,
-                    2000, 1200, 1200, 800, 800, 800, 1800, 800, 1200, 800,
-                    800, 1000, 200, 600, 800, 400, 200, 1000, 2000, 400,
-                    1200, 600, 1800, 2000, 1000, 1000, 1400, 600, 1600,
-                    1800, 1400, 1400, 200, 400, 1000, 1200, 1600, 1600,
-                    1800, 1400, 1000, 2000, 1400, 800, 1800, 400, 1600,
-                    400, 1600, 2000, 1000, 200, 2000, 600, 1000, 800, 800,
-                    600, 400, 1600, 800, 1000, 600, 2000, 800, 600, 600,
-                    400, 1000, 200, 2000, 2000],
-              mask=[False, False, False, False, False, False, False, False,
-                    False, False, False, False, False, False, False, False,
-                    False, False, False, False, False, False, False, False,
-                    False, False, False, False, False, False, False, False,
-                    False, False, False, False, False, False, False, False,
-                    False, False, False, False, False, False, False, False,
-                    False, False, False, False, False, False, False, False,
-                    False, False, False, False, False, False, False, False,
-                    False, False, False, False, False, False, False, False,
-                    False, False, False, False, False, False, False, False,
-                    False, False, False, False, False, False, False, False,
-                    False, False, False, False, False, False, False, False,
-                    False, False, False, False],
-        fill_value=&#39;?&#39;,
-             dtype=object),
- &#39;params&#39;: [{&#39;bootstrap&#39;: True,
-   &#39;max_depth&#39;: 30,
-   &#39;max_features&#39;: &#39;sqrt&#39;,
-   &#39;min_samples_leaf&#39;: 1,
-   &#39;min_samples_split&#39;: 5,
-   &#39;n_estimators&#39;: 400},
-  {&#39;bootstrap&#39;: True,
-   &#39;max_depth&#39;: 10,
-   &#39;max_features&#39;: &#39;sqrt&#39;,
-   &#39;min_samples_leaf&#39;: 1,
-   &#39;min_samples_split&#39;: 5,
-   &#39;n_estimators&#39;: 2000},
-  {&#39;bootstrap&#39;: False,
-   &#39;max_depth&#39;: 10,
-   &#39;max_features&#39;: &#39;sqrt&#39;,
-   &#39;min_samples_leaf&#39;: 2,
-   &#39;min_samples_split&#39;: 5,
-   &#39;n_estimators&#39;: 1200},
-  {&#39;bootstrap&#39;: False,
-   &#39;max_depth&#39;: 30,
-   &#39;max_features&#39;: &#39;auto&#39;,
-   &#39;min_samples_leaf&#39;: 4,
-   &#39;min_samples_split&#39;: 2,
-   &#39;n_estimators&#39;: 2000},
-  {&#39;bootstrap&#39;: True,
-   &#39;max_depth&#39;: 10,
-   &#39;max_features&#39;: &#39;sqrt&#39;,
-   &#39;min_samples_leaf&#39;: 4,
-   &#39;min_samples_split&#39;: 2,
-   &#39;n_estimators&#39;: 1600},
-  {&#39;bootstrap&#39;: False,
-   &#39;max_depth&#39;: 30,
-   &#39;max_features&#39;: &#39;sqrt&#39;,
-   &#39;min_samples_leaf&#39;: 4,
-   &#39;min_samples_split&#39;: 5,
-   &#39;n_estimators&#39;: 800},
-  {&#39;bootstrap&#39;: False,
-   &#39;max_depth&#39;: 100,
-   &#39;max_features&#39;: &#39;sqrt&#39;,
-   &#39;min_samples_leaf&#39;: 2,
-   &#39;min_samples_split&#39;: 5,
-   &#39;n_estimators&#39;: 1000},
-  {&#39;bootstrap&#39;: False,
-   &#39;max_depth&#39;: 60,
-   &#39;max_features&#39;: &#39;sqrt&#39;,
-   &#39;min_samples_leaf&#39;: 1,
-   &#39;min_samples_split&#39;: 5,
-   &#39;n_estimators&#39;: 600},
-  {&#39;bootstrap&#39;: False,
-   &#39;max_depth&#39;: 50,
-   &#39;max_features&#39;: &#39;auto&#39;,
-   &#39;min_samples_leaf&#39;: 1,
-   &#39;min_samples_split&#39;: 2,
-   &#39;n_estimators&#39;: 1000},
-  {&#39;bootstrap&#39;: False,
-   &#39;max_depth&#39;: 10,
-   &#39;max_features&#39;: &#39;auto&#39;,
-   &#39;min_samples_leaf&#39;: 4,
-   &#39;min_samples_split&#39;: 5,
-   &#39;n_estimators&#39;: 1800},
-  {&#39;bootstrap&#39;: True,
-   &#39;max_depth&#39;: 70,
-   &#39;max_features&#39;: &#39;auto&#39;,
-   &#39;min_samples_leaf&#39;: 4,
-   &#39;min_samples_split&#39;: 10,
-   &#39;n_estimators&#39;: 400},
-  {&#39;bootstrap&#39;: False,
-   &#39;max_depth&#39;: 90,
-   &#39;max_features&#39;: &#39;sqrt&#39;,
-   &#39;min_samples_leaf&#39;: 1,
-   &#39;min_samples_split&#39;: 5,
-   &#39;n_estimators&#39;: 800},
-  {&#39;bootstrap&#39;: False,
-   &#39;max_depth&#39;: 10,
-   &#39;max_features&#39;: &#39;sqrt&#39;,
-   &#39;min_samples_leaf&#39;: 1,
-   &#39;min_samples_split&#39;: 10,
-   &#39;n_estimators&#39;: 2000},
-  {&#39;bootstrap&#39;: False,
-   &#39;max_depth&#39;: 10,
-   &#39;max_features&#39;: &#39;sqrt&#39;,
-   &#39;min_samples_leaf&#39;: 2,
-   &#39;min_samples_split&#39;: 5,
-   &#39;n_estimators&#39;: 1600},
-  {&#39;bootstrap&#39;: False,
-   &#39;max_depth&#39;: 30,
-   &#39;max_features&#39;: &#39;sqrt&#39;,
-   &#39;min_samples_leaf&#39;: 2,
-   &#39;min_samples_split&#39;: 10,
-   &#39;n_estimators&#39;: 800},
-  {&#39;bootstrap&#39;: False,
-   &#39;max_depth&#39;: 50,
-   &#39;max_features&#39;: &#39;auto&#39;,
-   &#39;min_samples_leaf&#39;: 4,
-   &#39;min_samples_split&#39;: 2,
-   &#39;n_estimators&#39;: 1800},
-  {&#39;bootstrap&#39;: False,
-   &#39;max_depth&#39;: 70,
-   &#39;max_features&#39;: &#39;auto&#39;,
-   &#39;min_samples_leaf&#39;: 2,
-   &#39;min_samples_split&#39;: 5,
-   &#39;n_estimators&#39;: 600},
-  {&#39;bootstrap&#39;: True,
-   &#39;max_depth&#39;: 20,
-   &#39;max_features&#39;: &#39;sqrt&#39;,
-   &#39;min_samples_leaf&#39;: 1,
-   &#39;min_samples_split&#39;: 2,
-   &#39;n_estimators&#39;: 1000},
-  {&#39;bootstrap&#39;: False,
-   &#39;max_depth&#39;: 110,
-   &#39;max_features&#39;: &#39;auto&#39;,
-   &#39;min_samples_leaf&#39;: 2,
-   &#39;min_samples_split&#39;: 10,
-   &#39;n_estimators&#39;: 1800},
-  {&#39;bootstrap&#39;: True,
-   &#39;max_depth&#39;: 80,
-   &#39;max_features&#39;: &#39;auto&#39;,
-   &#39;min_samples_leaf&#39;: 1,
-   &#39;min_samples_split&#39;: 5,
-   &#39;n_estimators&#39;: 600},
-  {&#39;bootstrap&#39;: False,
-   &#39;max_depth&#39;: 30,
-   &#39;max_features&#39;: &#39;sqrt&#39;,
-   &#39;min_samples_leaf&#39;: 1,
-   &#39;min_samples_split&#39;: 10,
-   &#39;n_estimators&#39;: 1800},
-  {&#39;bootstrap&#39;: False,
-   &#39;max_depth&#39;: 70,
-   &#39;max_features&#39;: &#39;sqrt&#39;,
-   &#39;min_samples_leaf&#39;: 1,
-   &#39;min_samples_split&#39;: 5,
-   &#39;n_estimators&#39;: 1600},
-  {&#39;bootstrap&#39;: True,
-   &#39;max_depth&#39;: 80,
-   &#39;max_features&#39;: &#39;sqrt&#39;,
-   &#39;min_samples_leaf&#39;: 4,
-   &#39;min_samples_split&#39;: 5,
-   &#39;n_estimators&#39;: 1400},
-  {&#39;bootstrap&#39;: True,
-   &#39;max_depth&#39;: None,
-   &#39;max_features&#39;: &#39;auto&#39;,
-   &#39;min_samples_leaf&#39;: 2,
-   &#39;min_samples_split&#39;: 2,
-   &#39;n_estimators&#39;: 1800},
-  {&#39;bootstrap&#39;: False,
-   &#39;max_depth&#39;: 80,
-   &#39;max_features&#39;: &#39;sqrt&#39;,
-   &#39;min_samples_leaf&#39;: 1,
-   &#39;min_samples_split&#39;: 5,
-   &#39;n_estimators&#39;: 1400},
-  {&#39;bootstrap&#39;: False,
-   &#39;max_depth&#39;: None,
-   &#39;max_features&#39;: &#39;sqrt&#39;,
-   &#39;min_samples_leaf&#39;: 1,
-   &#39;min_samples_split&#39;: 2,
-   &#39;n_estimators&#39;: 400},
-  {&#39;bootstrap&#39;: False,
-   &#39;max_depth&#39;: 40,
-   &#39;max_features&#39;: &#39;auto&#39;,
-   &#39;min_samples_leaf&#39;: 1,
-   &#39;min_samples_split&#39;: 2,
-   &#39;n_estimators&#39;: 1400},
-  {&#39;bootstrap&#39;: True,
-   &#39;max_depth&#39;: 20,
-   &#39;max_features&#39;: &#39;sqrt&#39;,
-   &#39;min_samples_leaf&#39;: 2,
-   &#39;min_samples_split&#39;: 5,
-   &#39;n_estimators&#39;: 1000},
-  {&#39;bootstrap&#39;: False,
-   &#39;max_depth&#39;: 100,
-   &#39;max_features&#39;: &#39;auto&#39;,
-   &#39;min_samples_leaf&#39;: 4,
-   &#39;min_samples_split&#39;: 10,
-   &#39;n_estimators&#39;: 2000},
-  {&#39;bootstrap&#39;: True,
-   &#39;max_depth&#39;: 20,
-   &#39;max_features&#39;: &#39;sqrt&#39;,
-   &#39;min_samples_leaf&#39;: 2,
-   &#39;min_samples_split&#39;: 2,
-   &#39;n_estimators&#39;: 1200},
-  {&#39;bootstrap&#39;: False,
-   &#39;max_depth&#39;: 20,
-   &#39;max_features&#39;: &#39;sqrt&#39;,
-   &#39;min_samples_leaf&#39;: 4,
-   &#39;min_samples_split&#39;: 10,
-   &#39;n_estimators&#39;: 1200},
-  {&#39;bootstrap&#39;: False,
-   &#39;max_depth&#39;: 50,
-   &#39;max_features&#39;: &#39;sqrt&#39;,
-   &#39;min_samples_leaf&#39;: 2,
-   &#39;min_samples_split&#39;: 2,
-   &#39;n_estimators&#39;: 800},
-  {&#39;bootstrap&#39;: False,
-   &#39;max_depth&#39;: 100,
-   &#39;max_features&#39;: &#39;sqrt&#39;,
-   &#39;min_samples_leaf&#39;: 1,
-   &#39;min_samples_split&#39;: 5,
-   &#39;n_estimators&#39;: 800},
-  {&#39;bootstrap&#39;: True,
-   &#39;max_depth&#39;: 50,
-   &#39;max_features&#39;: &#39;sqrt&#39;,
-   &#39;min_samples_leaf&#39;: 4,
-   &#39;min_samples_split&#39;: 10,
-   &#39;n_estimators&#39;: 800},
-  {&#39;bootstrap&#39;: True,
-   &#39;max_depth&#39;: 90,
-   &#39;max_features&#39;: &#39;sqrt&#39;,
-   &#39;min_samples_leaf&#39;: 4,
-   &#39;min_samples_split&#39;: 2,
-   &#39;n_estimators&#39;: 1800},
-  {&#39;bootstrap&#39;: False,
-   &#39;max_depth&#39;: 20,
-   &#39;max_features&#39;: &#39;sqrt&#39;,
-   &#39;min_samples_leaf&#39;: 2,
-   &#39;min_samples_split&#39;: 10,
-   &#39;n_estimators&#39;: 800},
-  {&#39;bootstrap&#39;: True,
-   &#39;max_depth&#39;: 20,
-   &#39;max_features&#39;: &#39;sqrt&#39;,
-   &#39;min_samples_leaf&#39;: 2,
-   &#39;min_samples_split&#39;: 5,
-   &#39;n_estimators&#39;: 1200},
-  {&#39;bootstrap&#39;: True,
-   &#39;max_depth&#39;: 100,
-   &#39;max_features&#39;: &#39;auto&#39;,
-   &#39;min_samples_leaf&#39;: 1,
-   &#39;min_samples_split&#39;: 2,
-   &#39;n_estimators&#39;: 800},
-  {&#39;bootstrap&#39;: True,
-   &#39;max_depth&#39;: None,
-   &#39;max_features&#39;: &#39;auto&#39;,
-   &#39;min_samples_leaf&#39;: 2,
-   &#39;min_samples_split&#39;: 5,
-   &#39;n_estimators&#39;: 800},
-  {&#39;bootstrap&#39;: True,
-   &#39;max_depth&#39;: 60,
-   &#39;max_features&#39;: &#39;sqrt&#39;,
-   &#39;min_samples_leaf&#39;: 2,
-   &#39;min_samples_split&#39;: 2,
-   &#39;n_estimators&#39;: 1000},
-  {&#39;bootstrap&#39;: True,
-   &#39;max_depth&#39;: 10,
-   &#39;max_features&#39;: &#39;auto&#39;,
-   &#39;min_samples_leaf&#39;: 4,
-   &#39;min_samples_split&#39;: 5,
-   &#39;n_estimators&#39;: 200},
-  {&#39;bootstrap&#39;: True,
-   &#39;max_depth&#39;: 60,
-   &#39;max_features&#39;: &#39;sqrt&#39;,
-   &#39;min_samples_leaf&#39;: 2,
-   &#39;min_samples_split&#39;: 10,
-   &#39;n_estimators&#39;: 600},
-  {&#39;bootstrap&#39;: True,
-   &#39;max_depth&#39;: 90,
-   &#39;max_features&#39;: &#39;sqrt&#39;,
-   &#39;min_samples_leaf&#39;: 4,
-   &#39;min_samples_split&#39;: 2,
-   &#39;n_estimators&#39;: 800},
-  {&#39;bootstrap&#39;: True,
-   &#39;max_depth&#39;: 90,
-   &#39;max_features&#39;: &#39;sqrt&#39;,
-   &#39;min_samples_leaf&#39;: 4,
-   &#39;min_samples_split&#39;: 10,
-   &#39;n_estimators&#39;: 400},
-  {&#39;bootstrap&#39;: False,
-   &#39;max_depth&#39;: 90,
-   &#39;max_features&#39;: &#39;auto&#39;,
-   &#39;min_samples_leaf&#39;: 2,
-   &#39;min_samples_split&#39;: 5,
-   &#39;n_estimators&#39;: 200},
-  {&#39;bootstrap&#39;: True,
-   &#39;max_depth&#39;: 110,
-   &#39;max_features&#39;: &#39;sqrt&#39;,
-   &#39;min_samples_leaf&#39;: 1,
-   &#39;min_samples_split&#39;: 2,
-   &#39;n_estimators&#39;: 1000},
-  {&#39;bootstrap&#39;: True,
-   &#39;max_depth&#39;: 90,
-   &#39;max_features&#39;: &#39;auto&#39;,
-   &#39;min_samples_leaf&#39;: 2,
-   &#39;min_samples_split&#39;: 2,
-   &#39;n_estimators&#39;: 2000},
-  {&#39;bootstrap&#39;: False,
-   &#39;max_depth&#39;: 80,
-   &#39;max_features&#39;: &#39;sqrt&#39;,
-   &#39;min_samples_leaf&#39;: 4,
-   &#39;min_samples_split&#39;: 10,
-   &#39;n_estimators&#39;: 400},
-  {&#39;bootstrap&#39;: False,
-   &#39;max_depth&#39;: 70,
-   &#39;max_features&#39;: &#39;sqrt&#39;,
-   &#39;min_samples_leaf&#39;: 4,
-   &#39;min_samples_split&#39;: 2,
-   &#39;n_estimators&#39;: 1200},
-  {&#39;bootstrap&#39;: False,
-   &#39;max_depth&#39;: 110,
-   &#39;max_features&#39;: &#39;sqrt&#39;,
-   &#39;min_samples_leaf&#39;: 2,
-   &#39;min_samples_split&#39;: 2,
-   &#39;n_estimators&#39;: 600},
-  {&#39;bootstrap&#39;: False,
-   &#39;max_depth&#39;: 20,
-   &#39;max_features&#39;: &#39;auto&#39;,
-   &#39;min_samples_leaf&#39;: 1,
-   &#39;min_samples_split&#39;: 2,
-   &#39;n_estimators&#39;: 1800},
-  {&#39;bootstrap&#39;: False,
-   &#39;max_depth&#39;: 50,
-   &#39;max_features&#39;: &#39;auto&#39;,
-   &#39;min_samples_leaf&#39;: 2,
-   &#39;min_samples_split&#39;: 10,
-   &#39;n_estimators&#39;: 2000},
-  {&#39;bootstrap&#39;: False,
-   &#39;max_depth&#39;: 50,
-   &#39;max_features&#39;: &#39;auto&#39;,
-   &#39;min_samples_leaf&#39;: 4,
-   &#39;min_samples_split&#39;: 10,
-   &#39;n_estimators&#39;: 1000},
-  {&#39;bootstrap&#39;: False,
-   &#39;max_depth&#39;: 30,
-   &#39;max_features&#39;: &#39;auto&#39;,
-   &#39;min_samples_leaf&#39;: 4,
-   &#39;min_samples_split&#39;: 5,
-   &#39;n_estimators&#39;: 1000},
-  {&#39;bootstrap&#39;: False,
-   &#39;max_depth&#39;: None,
-   &#39;max_features&#39;: &#39;sqrt&#39;,
-   &#39;min_samples_leaf&#39;: 2,
-   &#39;min_samples_split&#39;: 5,
-   &#39;n_estimators&#39;: 1400},
-  {&#39;bootstrap&#39;: False,
-   &#39;max_depth&#39;: 60,
-   &#39;max_features&#39;: &#39;sqrt&#39;,
-   &#39;min_samples_leaf&#39;: 4,
-   &#39;min_samples_split&#39;: 2,
-   &#39;n_estimators&#39;: 600},
-  {&#39;bootstrap&#39;: True,
-   &#39;max_depth&#39;: 10,
-   &#39;max_features&#39;: &#39;auto&#39;,
-   &#39;min_samples_leaf&#39;: 1,
-   &#39;min_samples_split&#39;: 5,
-   &#39;n_estimators&#39;: 1600},
-  {&#39;bootstrap&#39;: True,
-   &#39;max_depth&#39;: 80,
-   &#39;max_features&#39;: &#39;auto&#39;,
-   &#39;min_samples_leaf&#39;: 2,
-   &#39;min_samples_split&#39;: 2,
-   &#39;n_estimators&#39;: 1800},
-  {&#39;bootstrap&#39;: True,
-   &#39;max_depth&#39;: 100,
-   &#39;max_features&#39;: &#39;auto&#39;,
-   &#39;min_samples_leaf&#39;: 1,
-   &#39;min_samples_split&#39;: 2,
-   &#39;n_estimators&#39;: 1400},
-  {&#39;bootstrap&#39;: True,
-   &#39;max_depth&#39;: 80,
-   &#39;max_features&#39;: &#39;sqrt&#39;,
-   &#39;min_samples_leaf&#39;: 2,
-   &#39;min_samples_split&#39;: 10,
-   &#39;n_estimators&#39;: 1400},
-  {&#39;bootstrap&#39;: True,
-   &#39;max_depth&#39;: 50,
-   &#39;max_features&#39;: &#39;sqrt&#39;,
-   &#39;min_samples_leaf&#39;: 1,
-   &#39;min_samples_split&#39;: 2,
-   &#39;n_estimators&#39;: 200},
-  {&#39;bootstrap&#39;: True,
-   &#39;max_depth&#39;: 10,
-   &#39;max_features&#39;: &#39;sqrt&#39;,
-   &#39;min_samples_leaf&#39;: 4,
-   &#39;min_samples_split&#39;: 2,
-   &#39;n_estimators&#39;: 400},
-  {&#39;bootstrap&#39;: False,
-   &#39;max_depth&#39;: 80,
-   &#39;max_features&#39;: &#39;auto&#39;,
-   &#39;min_samples_leaf&#39;: 4,
-   &#39;min_samples_split&#39;: 10,
-   &#39;n_estimators&#39;: 1000},
-  {&#39;bootstrap&#39;: False,
-   &#39;max_depth&#39;: None,
-   &#39;max_features&#39;: &#39;auto&#39;,
-   &#39;min_samples_leaf&#39;: 2,
-   &#39;min_samples_split&#39;: 10,
-   &#39;n_estimators&#39;: 1200},
-  {&#39;bootstrap&#39;: True,
-   &#39;max_depth&#39;: 20,
-   &#39;max_features&#39;: &#39;sqrt&#39;,
-   &#39;min_samples_leaf&#39;: 1,
-   &#39;min_samples_split&#39;: 10,
-   &#39;n_estimators&#39;: 1600},
-  {&#39;bootstrap&#39;: True,
-   &#39;max_depth&#39;: None,
-   &#39;max_features&#39;: &#39;auto&#39;,
-   &#39;min_samples_leaf&#39;: 2,
-   &#39;min_samples_split&#39;: 10,
-   &#39;n_estimators&#39;: 1600},
-  {&#39;bootstrap&#39;: False,
-   &#39;max_depth&#39;: 10,
-   &#39;max_features&#39;: &#39;auto&#39;,
-   &#39;min_samples_leaf&#39;: 4,
-   &#39;min_samples_split&#39;: 2,
-   &#39;n_estimators&#39;: 1800},
-  {&#39;bootstrap&#39;: True,
-   &#39;max_depth&#39;: 70,
-   &#39;max_features&#39;: &#39;auto&#39;,
-   &#39;min_samples_leaf&#39;: 2,
-   &#39;min_samples_split&#39;: 2,
-   &#39;n_estimators&#39;: 1400},
-  {&#39;bootstrap&#39;: False,
-   &#39;max_depth&#39;: 80,
-   &#39;max_features&#39;: &#39;sqrt&#39;,
-   &#39;min_samples_leaf&#39;: 1,
-   &#39;min_samples_split&#39;: 10,
-   &#39;n_estimators&#39;: 1000},
-  {&#39;bootstrap&#39;: False,
-   &#39;max_depth&#39;: 60,
-   &#39;max_features&#39;: &#39;auto&#39;,
-   &#39;min_samples_leaf&#39;: 2,
-   &#39;min_samples_split&#39;: 10,
-   &#39;n_estimators&#39;: 2000},
-  {&#39;bootstrap&#39;: False,
-   &#39;max_depth&#39;: 80,
-   &#39;max_features&#39;: &#39;sqrt&#39;,
-   &#39;min_samples_leaf&#39;: 4,
-   &#39;min_samples_split&#39;: 2,
-   &#39;n_estimators&#39;: 1400},
-  {&#39;bootstrap&#39;: False,
-   &#39;max_depth&#39;: 20,
-   &#39;max_features&#39;: &#39;sqrt&#39;,
-   &#39;min_samples_leaf&#39;: 4,
-   &#39;min_samples_split&#39;: 2,
-   &#39;n_estimators&#39;: 800},
-  {&#39;bootstrap&#39;: True,
-   &#39;max_depth&#39;: 60,
-   &#39;max_features&#39;: &#39;sqrt&#39;,
-   &#39;min_samples_leaf&#39;: 2,
-   &#39;min_samples_split&#39;: 5,
-   &#39;n_estimators&#39;: 1800},
-  {&#39;bootstrap&#39;: False,
-   &#39;max_depth&#39;: 90,
-   &#39;max_features&#39;: &#39;auto&#39;,
-   &#39;min_samples_leaf&#39;: 1,
-   &#39;min_samples_split&#39;: 5,
-   &#39;n_estimators&#39;: 400},
-  {&#39;bootstrap&#39;: True,
-   &#39;max_depth&#39;: 90,
-   &#39;max_features&#39;: &#39;auto&#39;,
-   &#39;min_samples_leaf&#39;: 1,
-   &#39;min_samples_split&#39;: 5,
-   &#39;n_estimators&#39;: 1600},
-  {&#39;bootstrap&#39;: False,
-   &#39;max_depth&#39;: 90,
-   &#39;max_features&#39;: &#39;sqrt&#39;,
-   &#39;min_samples_leaf&#39;: 2,
-   &#39;min_samples_split&#39;: 10,
-   &#39;n_estimators&#39;: 400},
-  {&#39;bootstrap&#39;: True,
-   &#39;max_depth&#39;: None,
-   &#39;max_features&#39;: &#39;sqrt&#39;,
-   &#39;min_samples_leaf&#39;: 1,
-   &#39;min_samples_split&#39;: 10,
-   &#39;n_estimators&#39;: 1600},
-  {&#39;bootstrap&#39;: True,
-   &#39;max_depth&#39;: 100,
-   &#39;max_features&#39;: &#39;sqrt&#39;,
-   &#39;min_samples_leaf&#39;: 1,
-   &#39;min_samples_split&#39;: 5,
-   &#39;n_estimators&#39;: 2000},
-  {&#39;bootstrap&#39;: True,
-   &#39;max_depth&#39;: 10,
-   &#39;max_features&#39;: &#39;sqrt&#39;,
-   &#39;min_samples_leaf&#39;: 2,
-   &#39;min_samples_split&#39;: 5,
-   &#39;n_estimators&#39;: 1000},
-  {&#39;bootstrap&#39;: True,
-   &#39;max_depth&#39;: 80,
-   &#39;max_features&#39;: &#39;auto&#39;,
-   &#39;min_samples_leaf&#39;: 4,
-   &#39;min_samples_split&#39;: 5,
-   &#39;n_estimators&#39;: 200},
-  {&#39;bootstrap&#39;: False,
-   &#39;max_depth&#39;: 60,
-   &#39;max_features&#39;: &#39;auto&#39;,
-   &#39;min_samples_leaf&#39;: 4,
-   &#39;min_samples_split&#39;: 2,
-   &#39;n_estimators&#39;: 2000},
-  {&#39;bootstrap&#39;: True,
-   &#39;max_depth&#39;: 100,
-   &#39;max_features&#39;: &#39;auto&#39;,
-   &#39;min_samples_leaf&#39;: 2,
-   &#39;min_samples_split&#39;: 10,
-   &#39;n_estimators&#39;: 600},
-  {&#39;bootstrap&#39;: True,
-   &#39;max_depth&#39;: 100,
-   &#39;max_features&#39;: &#39;auto&#39;,
-   &#39;min_samples_leaf&#39;: 4,
-   &#39;min_samples_split&#39;: 5,
-   &#39;n_estimators&#39;: 1000},
-  {&#39;bootstrap&#39;: False,
-   &#39;max_depth&#39;: None,
-   &#39;max_features&#39;: &#39;auto&#39;,
-   &#39;min_samples_leaf&#39;: 2,
-   &#39;min_samples_split&#39;: 10,
-   &#39;n_estimators&#39;: 800},
-  {&#39;bootstrap&#39;: False,
-   &#39;max_depth&#39;: 70,
-   &#39;max_features&#39;: &#39;sqrt&#39;,
-   &#39;min_samples_leaf&#39;: 4,
-   &#39;min_samples_split&#39;: 5,
-   &#39;n_estimators&#39;: 800},
-  {&#39;bootstrap&#39;: False,
-   &#39;max_depth&#39;: 40,
-   &#39;max_features&#39;: &#39;sqrt&#39;,
-   &#39;min_samples_leaf&#39;: 1,
-   &#39;min_samples_split&#39;: 10,
-   &#39;n_estimators&#39;: 600},
-  {&#39;bootstrap&#39;: True,
-   &#39;max_depth&#39;: 100,
-   &#39;max_features&#39;: &#39;sqrt&#39;,
-   &#39;min_samples_leaf&#39;: 1,
-   &#39;min_samples_split&#39;: 5,
-   &#39;n_estimators&#39;: 400},
-  {&#39;bootstrap&#39;: True,
-   &#39;max_depth&#39;: 80,
-   &#39;max_features&#39;: &#39;sqrt&#39;,
-   &#39;min_samples_leaf&#39;: 4,
-   &#39;min_samples_split&#39;: 2,
-   &#39;n_estimators&#39;: 1600},
-  {&#39;bootstrap&#39;: True,
-   &#39;max_depth&#39;: 100,
-   &#39;max_features&#39;: &#39;sqrt&#39;,
-   &#39;min_samples_leaf&#39;: 4,
-   &#39;min_samples_split&#39;: 10,
-   &#39;n_estimators&#39;: 800},
-  {&#39;bootstrap&#39;: True,
-   &#39;max_depth&#39;: 10,
-   &#39;max_features&#39;: &#39;sqrt&#39;,
-   &#39;min_samples_leaf&#39;: 2,
-   &#39;min_samples_split&#39;: 10,
-   &#39;n_estimators&#39;: 1000},
-  {&#39;bootstrap&#39;: True,
-   &#39;max_depth&#39;: 110,
-   &#39;max_features&#39;: &#39;sqrt&#39;,
-   &#39;min_samples_leaf&#39;: 1,
-   &#39;min_samples_split&#39;: 10,
-   &#39;n_estimators&#39;: 600},
-  {&#39;bootstrap&#39;: False,
-   &#39;max_depth&#39;: None,
-   &#39;max_features&#39;: &#39;sqrt&#39;,
-   &#39;min_samples_leaf&#39;: 4,
-   &#39;min_samples_split&#39;: 5,
-   &#39;n_estimators&#39;: 2000},
-  {&#39;bootstrap&#39;: True,
-   &#39;max_depth&#39;: 40,
-   &#39;max_features&#39;: &#39;sqrt&#39;,
-   &#39;min_samples_leaf&#39;: 1,
-   &#39;min_samples_split&#39;: 5,
-   &#39;n_estimators&#39;: 800},
-  {&#39;bootstrap&#39;: True,
-   &#39;max_depth&#39;: 40,
-   &#39;max_features&#39;: &#39;auto&#39;,
-   &#39;min_samples_leaf&#39;: 4,
-   &#39;min_samples_split&#39;: 2,
-   &#39;n_estimators&#39;: 600},
-  {&#39;bootstrap&#39;: False,
-   &#39;max_depth&#39;: 30,
-   &#39;max_features&#39;: &#39;sqrt&#39;,
-   &#39;min_samples_leaf&#39;: 4,
-   &#39;min_samples_split&#39;: 2,
-   &#39;n_estimators&#39;: 600},
-  {&#39;bootstrap&#39;: False,
-   &#39;max_depth&#39;: 40,
-   &#39;max_features&#39;: &#39;auto&#39;,
-   &#39;min_samples_leaf&#39;: 2,
-   &#39;min_samples_split&#39;: 10,
-   &#39;n_estimators&#39;: 400},
-  {&#39;bootstrap&#39;: False,
-   &#39;max_depth&#39;: 10,
-   &#39;max_features&#39;: &#39;auto&#39;,
-   &#39;min_samples_leaf&#39;: 1,
-   &#39;min_samples_split&#39;: 2,
-   &#39;n_estimators&#39;: 1000},
-  {&#39;bootstrap&#39;: False,
-   &#39;max_depth&#39;: 100,
-   &#39;max_features&#39;: &#39;auto&#39;,
-   &#39;min_samples_leaf&#39;: 4,
-   &#39;min_samples_split&#39;: 5,
-   &#39;n_estimators&#39;: 200},
-  {&#39;bootstrap&#39;: True,
-   &#39;max_depth&#39;: 20,
-   &#39;max_features&#39;: &#39;sqrt&#39;,
-   &#39;min_samples_leaf&#39;: 2,
-   &#39;min_samples_split&#39;: 2,
-   &#39;n_estimators&#39;: 2000},
-  {&#39;bootstrap&#39;: True,
-   &#39;max_depth&#39;: 40,
-   &#39;max_features&#39;: &#39;auto&#39;,
-   &#39;min_samples_leaf&#39;: 2,
-   &#39;min_samples_split&#39;: 10,
-   &#39;n_estimators&#39;: 2000}],
- &#39;rank_test_score&#39;: array([ 36,  94,  88,  53, 100,  38,  14,   4,   1,  93,  84,   5,  91,
-         90,  30,  40,  12,  42,  28,  35,  21,   7,  77,  45,   6,   3,
-          1,  69,  57,  67,  66,  10,   9,  87,  77,  59,  70,  18,  61,
-         49,  98,  74,  82,  85,  15,  16,  54,  56,  47,  11,  23,  29,
-         55,  39,  13,  42,  92,  57,  17,  72,  22,  99,  62,  27,  76,
-         71,  95,  51,  20,  25,  44,  63,  60,   8,  32,  26,  64,  34,
-         95,  83,  46,  75,  81,  24,  48,  19,  37,  80,  86,  97,  65,
-         40,  33,  79,  52,  31,  89,  49,  68,  73], dtype=int32),
- &#39;split0_test_score&#39;: array([0.87893428, 0.8364106 , 0.83717593, 0.87644695, 0.83607577,
-        0.87730795, 0.88701808, 0.89027074, 0.89323639, 0.83688893,
-        0.86434516, 0.89031857, 0.83650627, 0.83679327, 0.88118244,
-        0.87663829, 0.88677892, 0.87630345, 0.8817086 , 0.88027361,
-        0.88419592, 0.89089257, 0.86530183, 0.87668612, 0.89074907,
-        0.89381039, 0.89357122, 0.86979814, 0.87539462, 0.87152014,
-        0.87152014, 0.88725725, 0.88969674, 0.86405817, 0.86592366,
-        0.87510762, 0.87013298, 0.88395676, 0.87491629, 0.87625562,
-        0.8355496 , 0.86936765, 0.86477566, 0.864106  , 0.88558309,
-        0.88558309, 0.87601645, 0.87682962, 0.87716445, 0.88749641,
-        0.88433942, 0.8822826 , 0.87615995, 0.87692528, 0.88663542,
-        0.87668612, 0.83636277, 0.87587296, 0.88515259, 0.86975031,
-        0.88390893, 0.8362671 , 0.87568162, 0.88209127, 0.86764565,
-        0.86960681, 0.83645843, 0.87639912, 0.88453076, 0.8819956 ,
-        0.87702095, 0.87257247, 0.87491629, 0.8906534 , 0.88017794,
-        0.88180427, 0.87257247, 0.88027361, 0.83617143, 0.864393  ,
-        0.87668612, 0.86922415, 0.86506266, 0.88290443, 0.87659045,
-        0.88429159, 0.87888644, 0.86534966, 0.8642495 , 0.83602793,
-        0.8720463 , 0.87702095, 0.88032144, 0.86477566, 0.87649479,
-        0.88094327, 0.83703243, 0.87668612, 0.87089831, 0.86955898]),
- &#39;split1_test_score&#39;: array([0.88008227, 0.8355496 , 0.8365541 , 0.87549029, 0.83478427,
-        0.87668612, 0.88524825, 0.88926624, 0.89060557, 0.8356931 ,
-        0.86314934, 0.88850091, 0.8359801 , 0.83578877, 0.88094327,
-        0.87606429, 0.88649192, 0.87678179, 0.8807041 , 0.87955611,
-        0.88362193, 0.88840524, 0.86477566, 0.87582512, 0.88912274,
-        0.89161006, 0.8905099 , 0.86917631, 0.87501196, 0.87046781,
-        0.87118531, 0.88677892, 0.88845308, 0.86243184, 0.86468   ,
-        0.87534679, 0.86927198, 0.88457859, 0.87429446, 0.87553812,
-        0.8355496 , 0.86855448, 0.86386683, 0.8636755 , 0.88515259,
-        0.88414809, 0.87563379, 0.87520329, 0.87572946, 0.88630058,
-        0.88218693, 0.88036927, 0.87496413, 0.87620779, 0.88529609,
-        0.87625562, 0.83559744, 0.87505979, 0.88424376, 0.86812398,
-        0.88338276, 0.8356931 , 0.87381613, 0.88094327, 0.86721515,
-        0.86912848, 0.83578877, 0.87592079, 0.88400459, 0.88103894,
-        0.87620779, 0.8720463 , 0.87462929, 0.88850091, 0.87998661,
-        0.88151727, 0.87118531, 0.87936478, 0.83559744, 0.8648235 ,
-        0.87615995, 0.86812398, 0.8642495 , 0.88065627, 0.87596862,
-        0.88371759, 0.87950828, 0.86420166, 0.86300584, 0.83564527,
-        0.8717593 , 0.87630345, 0.87993877, 0.8645365 , 0.87572946,
-        0.88051277, 0.8362671 , 0.87582512, 0.87046781, 0.86807615]),
- &#39;split2_test_score&#39;: array([0.88453076, 0.84109825, 0.84109825, 0.88065627, 0.84042859,
-        0.88094327, 0.88912274, 0.89438439, 0.89773271, 0.84066775,
-        0.86893715, 0.89467139, 0.84100258, 0.84114608, 0.88491342,
-        0.88175643, 0.88950541, 0.88132594, 0.88496126, 0.88414809,
-        0.88787908, 0.89395389, 0.87046781, 0.88151727, 0.89342772,
-        0.89586722, 0.89749354, 0.87505979, 0.88041711, 0.87630345,
-        0.87620779, 0.89098823, 0.89452789, 0.86793265, 0.86994164,
-        0.87998661, 0.87448579, 0.88907491, 0.88060844, 0.88132594,
-        0.84085908, 0.87367263, 0.86970248, 0.86812398, 0.88960107,
-        0.88974457, 0.88022577, 0.87931694, 0.8808476 , 0.8902229 ,
-        0.88778341, 0.88467426, 0.88027361, 0.88166077, 0.8903664 ,
-        0.88146943, 0.84148091, 0.87989094, 0.88912274, 0.87395963,
-        0.88811824, 0.83966325, 0.88022577, 0.88476992, 0.87238113,
-        0.87415096, 0.84042859, 0.88051277, 0.88754425, 0.88520042,
-        0.88089544, 0.87678179, 0.88041711, 0.89371472, 0.88515259,
-        0.88476992, 0.87745145, 0.88472209, 0.84090692, 0.86888931,
-        0.88094327, 0.87352913, 0.86975031, 0.88491342, 0.88089544,
-        0.88835741, 0.88453076, 0.86955898, 0.86850665, 0.84076342,
-        0.87702095, 0.8811346 , 0.88462642, 0.87037214, 0.8805606 ,
-        0.88553525, 0.84128958, 0.88060844, 0.87529896, 0.87415096]),
- &#39;std_fit_time&#39;: array([0.03016886, 0.55073962, 0.06430133, 0.883531  , 0.47788639,
-        0.75268143, 0.78046777, 0.31105625, 0.6345758 , 0.14174679,
-        0.26479795, 1.75271831, 1.02296439, 1.13069859, 0.47799676,
-        1.35041876, 0.78189283, 0.70019409, 2.15476714, 0.32950647,
-        1.60126315, 0.5220209 , 0.90328334, 2.0383408 , 2.07752539,
-        0.1566441 , 2.5688654 , 0.20298075, 1.10049705, 0.86281487,
-        0.96811547, 0.42398816, 0.47414044, 0.4172884 , 0.99376438,
-        0.21056852, 0.04703739, 0.55948702, 0.08847546, 0.54673861,
-        0.13710856, 0.03064247, 0.1681885 , 0.16735612, 0.05615744,
-        0.26018929, 0.35775662, 0.26577213, 0.81839923, 0.30367386,
-        0.26238054, 0.36116387, 0.29666549, 0.60217204, 0.40454312,
-        0.18824698, 0.21187616, 1.01694674, 0.76545595, 0.55728103,
-        0.15061511, 0.3337544 , 0.55674152, 0.42437723, 0.73280674,
-        0.34128994, 0.62793679, 0.41091128, 0.44285288, 1.89451294,
-        0.59452609, 0.8229469 , 0.17557878, 0.67934991, 0.69625675,
-        0.34370415, 0.30440377, 1.2277096 , 0.37157381, 0.07324351,
-        0.18971291, 0.18534763, 0.59698612, 0.35271236, 0.72255458,
-        0.50769224, 0.16192172, 0.8424334 , 0.41786112, 0.10821467,
-        0.14795863, 1.8841965 , 0.26027424, 0.15464422, 0.34475631,
-        0.24310044, 0.44581224, 0.18160894, 0.09234886, 0.29710275]),
- &#39;std_score_time&#39;: array([0.03555386, 0.09826654, 0.15176989, 0.11533672, 0.05366389,
-        0.04002197, 0.06698277, 0.02373323, 0.09900123, 0.04916144,
-        0.02410839, 0.0430044 , 0.02373867, 0.04339756, 0.05476425,
-        0.06458183, 0.06375639, 0.07947623, 0.0638617 , 0.0368962 ,
-        0.05062655, 0.06006904, 0.0804424 , 0.17030304, 0.08448223,
-        0.04308261, 0.01751393, 0.08742138, 0.29386888, 0.01201318,
-        0.06515957, 0.06993941, 0.06634686, 0.04201796, 0.07099847,
-        0.05604997, 0.0335867 , 0.14425011, 0.06391168, 0.15007698,
-        0.02389496, 0.07233048, 0.04581063, 0.04947462, 0.02403072,
-        0.04720673, 0.09804731, 0.04468616, 0.05251963, 0.02080035,
-        0.07304516, 0.07157471, 0.03966869, 0.09976989, 0.10122994,
-        0.04612163, 0.04021586, 0.06516671, 0.13246248, 0.02181047,
-        0.00990864, 0.02948499, 0.01965912, 0.13092723, 0.03757215,
-        0.04657927, 0.06372543, 0.08138188, 0.04441271, 0.0940481 ,
-        0.07343211, 0.08466256, 0.04872326, 0.03814486, 0.05287303,
-        0.01486762, 0.11008866, 0.05945934, 0.01369549, 0.04855735,
-        0.17409556, 0.07322397, 0.13230019, 0.0968847 , 0.09458291,
-        0.05371471, 0.0249595 , 0.08734984, 0.03413854, 0.01737106,
-        0.08360529, 0.14135714, 0.05112651, 0.04374821, 0.10052208,
-        0.03210866, 0.03119261, 0.04219566, 0.14121451, 0.07545946]),
- &#39;std_test_score&#39;: array([0.00241356, 0.00243819, 0.00201165, 0.00224403, 0.00241461,
-        0.00187751, 0.00158372, 0.00221426, 0.00294268, 0.00212018,
-        0.00249477, 0.00258899, 0.00225386, 0.00232515, 0.0018178 ,
-        0.00255876, 0.00135799, 0.00226332, 0.00181696, 0.00201695,
-        0.00188616, 0.00226926, 0.00256828, 0.00250515, 0.00177492,
-        0.0017383 , 0.00285827, 0.00263917, 0.00246278, 0.00253952,
-        0.00229278, 0.00188171, 0.00262022, 0.00230737, 0.00224539,
-        0.00224573, 0.00228211, 0.00228033, 0.00284123, 0.00257599,
-        0.00250291, 0.00224573, 0.00256373, 0.00200329, 0.00200329,
-        0.00237341, 0.00208036, 0.00169161, 0.00215562, 0.00164142,
-        0.00230494, 0.00176111, 0.00227407, 0.00241924, 0.00214533,
-        0.00236289, 0.00261186, 0.00211201, 0.0021185 , 0.00245895,
-        0.00211922, 0.001752  , 0.00269182, 0.00160334, 0.00234041,
-        0.00226332, 0.00204772, 0.00206121, 0.00155946, 0.00177964,
-        0.00204524, 0.00211922, 0.00266333, 0.00213928, 0.00239145,
-        0.00147035, 0.00268728, 0.00234084, 0.00237919, 0.00202575,
-        0.00214166, 0.00233235, 0.00242428, 0.00173889, 0.00219071,
-        0.00206528, 0.00252697, 0.00230307, 0.00235535, 0.00232777,
-        0.00241556, 0.00212856, 0.00212533, 0.00269635, 0.00212018,
-        0.00227296, 0.00220943, 0.00208183, 0.00218304, 0.00258604])}</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">rfc_random</span><span class="o">.</span><span class="n">best_estimator_</span>
 </pre></div>
 
@@ -15286,11 +14270,8 @@ weighted avg       0.91      0.89      0.89     20906
 <div class="prompt input_prompt">In&nbsp;[33]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Import the model we are using</span>
-<span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">RandomForestClassifier</span>
-<span class="c1"># Instantiate model with 1000 decision trees</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">RandomForestClassifier</span>
 <span class="n">rfc</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">(</span><span class="n">n_estimators</span> <span class="o">=</span> <span class="mi">1000</span><span class="p">,</span> <span class="n">max_depth</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">bootstrap</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">max_features</span><span class="o">=</span><span class="s1">&#39;auto&#39;</span><span class="p">,</span> <span class="n">min_samples_leaf</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">min_samples_split</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-<span class="c1"># rfc = RandomForestClassifier(bootstrap=True, max_depth=80, max_features=&#39;auto&#39;, min_samples_leaf=1, min_samples_split=5, n_estimators=600)</span>
 </pre></div>
 
     </div>
@@ -15384,13 +14365,28 @@ weighted avg       0.90      0.90      0.90     20906
 </div>
 
 </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Recall and f1-score values for 1 are now better than before.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Grid-Search-CV">Grid Search CV<a class="anchor-link" href="#Grid-Search-CV">&#182;</a></h3>
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">GridSearchCV</span>
-<span class="c1"># Create the parameter grid based on the results of random search </span>
+
 <span class="n">param_grid</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s1">&#39;bootstrap&#39;</span><span class="p">:</span> <span class="p">[</span><span class="kc">False</span><span class="p">],</span>
     <span class="s1">&#39;max_depth&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">60</span><span class="p">],</span>
@@ -15399,7 +14395,7 @@ weighted avg       0.90      0.90      0.90     20906
     <span class="s1">&#39;min_samples_split&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
     <span class="s1">&#39;n_estimators&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">800</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="mi">1200</span><span class="p">]</span>
 <span class="p">}</span>
-<span class="c1"># Create a based model</span>
+
 <span class="n">rfc</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">()</span>
 
 
@@ -16068,7 +15064,7 @@ weighted avg       0.90      0.90      0.90     20906
 <span class="n">skf</span> <span class="o">=</span> <span class="n">StratifiedKFold</span><span class="p">(</span><span class="n">n_splits</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">combinations</span> <span class="o">=</span> <span class="p">{}</span>
 
-<span class="c1">#  RandomForestClassifier(n_estimators = 900, max_depth=50, bootstrap=False, max_features=&#39;auto&#39;, min_samples_leaf=1, min_samples_split=2)</span>
+<span class="c1">#  RandomForestClassifier(n_estimators = 1000, max_depth=50, bootstrap=False, max_features=&#39;auto&#39;, min_samples_leaf=1, min_samples_split=2)</span>
 <span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s2">&quot;bootsrap&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
     <span class="s2">&quot;n_estimators&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">800</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="mi">1200</span><span class="p">],</span>
@@ -17165,32 +16161,8 @@ weighted avg       0.90      0.90      0.90     20906
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">testY_pred</span> <span class="o">=</span> <span class="n">rfc</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">test_set_ohe</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[56]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">test_set</span><span class="p">[</span><span class="s2">&quot;buy&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">testY_pred</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[57]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">test_set</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;test_set_predicted_randomForest.csv&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">test_set</span><span class="p">[</span><span class="s2">&quot;buy&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">testY_pred</span>
+<span class="n">test_set</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;test_set_predicted_randomForest.csv&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </pre></div>
 
     </div>
