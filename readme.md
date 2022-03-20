@@ -1,10 +1,13 @@
 *Github: https://github.com/kenzo94/datamining
 
-1. Predicted Files
+1. Die von unseren besten Modellen vorhergesagten Testdaten finden Sie in den CSV-Dateien: 
+Predicted Files
 <ul>
   <li>Bester Classifier für Accuracy (Random Forest): "test_set_predicted_randomForest.csv</li>
   <li>Bester Classifier für monetäres Maß (Log Regression): "test_set_predicted_LogReg_monetaer.csv"</li>
 </ul>
 
-2. In den HTML-Ordner finden Sie die einzelnen Notebooks als HTML
-3. Unsere Datapreprocessing finden Sie in dem Notebook WartenOderKaufen.ipynb. Alle anderen Notebooks enthalten die einzelnen Algorithmen (LogReg, RF, SVM und Decision Tree) 
+2. Im HTML-Ordner finden Sie die einzelnen Notebooks als HTML-Dateien.
+3. Unsere Datapreprocessing finden Sie in dem Notebook WartenOderKaufen.ipynb. 
+4. Alle anderen Notebooks enthalten die einzelnen Algorithmen (LogReg, RF, SVM und Decision Tree)
+5. Die Datenquellen (train_set.csv, test_set.csv) haben wir ebenfalls mitgegeben, damit die Notebooks notfalls noch einmal compiliert werden können. 
