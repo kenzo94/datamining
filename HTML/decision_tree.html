@@ -15265,11 +15265,9 @@ Scores: [0.82892219 0.83785077 0.82477679 0.82764668 0.83067602 0.8309949
 
 <span class="c1"># Setup the parameters and distributions to sample from</span>
 <span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s2">&quot;criterion&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;gini&#39;</span><span class="p">,</span> <span class="s1">&#39;entropy&#39;</span><span class="p">],</span>
     <span class="s2">&quot;max_depth&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">23</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">33</span><span class="p">],</span>
     <span class="s2">&quot;min_samples_split&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">26</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">36</span><span class="p">],</span>
     <span class="s2">&quot;min_samples_leaf&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">15</span><span class="p">],</span>
-    <span class="s2">&quot;max_features&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;auto&#39;</span><span class="p">,</span> <span class="s1">&#39;sqrt&#39;</span><span class="p">,</span> <span class="s1">&#39;log2&#39;</span><span class="p">],</span>
 <span class="p">}</span>
 
 <span class="c1"># Iterate over all parameter combinations and execute money evaluation</span>
@@ -15278,9 +15276,9 @@ Scores: [0.82892219 0.83785077 0.82477679 0.82764668 0.83067602 0.8309949
 <span class="p">):</span>
     <span class="n">clf</span> <span class="o">=</span> <span class="n">DecisionTreeClassifier</span><span class="p">(</span>
         <span class="n">max_depth</span><span class="o">=</span><span class="n">param</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
-        <span class="n">max_features</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span><span class="p">,</span>
-        <span class="n">min_samples_leaf</span><span class="o">=</span><span class="n">param</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span>
         <span class="n">min_samples_split</span><span class="o">=</span><span class="n">param</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+        <span class="n">min_samples_leaf</span><span class="o">=</span><span class="n">param</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span>
+        <span class="n">max_features</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span><span class="p">,</span>
         <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span>
     <span class="p">)</span>
     <span class="n">money_scores</span> <span class="o">=</span> <span class="p">[]</span>
