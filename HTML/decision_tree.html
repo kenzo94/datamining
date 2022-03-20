@@ -14790,11 +14790,16 @@ memory usage: 17.2 MB
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Results Using Gini Index:&quot;</span><span class="p">)</span>
 <span class="n">y_pred_gini</span> <span class="o">=</span> <span class="n">prediction</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">clf_gini</span><span class="p">)</span>
 <span class="n">cal_accuracy</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred_gini</span><span class="p">)</span>
-
+<span class="n">scores</span> <span class="o">=</span> <span class="n">cross_val_score</span><span class="p">(</span><span class="n">clf_gini</span><span class="p">,</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%0.2f</span><span class="s2"> accuracy with a standard deviation of </span><span class="si">%0.2f</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">scores</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">scores</span><span class="o">.</span><span class="n">std</span><span class="p">()))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Scores:&quot;</span><span class="p">,</span> <span class="n">scores</span><span class="p">)</span>
 <span class="c1"># Prediction using entropy</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Results Using Entropy:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Results Using Entropy:&quot;</span><span class="p">)</span>
 <span class="n">y_pred_entropy</span> <span class="o">=</span> <span class="n">prediction</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">clf_entropy</span><span class="p">)</span>
 <span class="n">cal_accuracy</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred_entropy</span><span class="p">)</span>
+<span class="n">scores</span> <span class="o">=</span> <span class="n">cross_val_score</span><span class="p">(</span><span class="n">clf_entropy</span><span class="p">,</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%0.2f</span><span class="s2"> accuracy with a standard deviation of </span><span class="si">%0.2f</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">scores</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">scores</span><span class="o">.</span><span class="n">std</span><span class="p">()))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Scores:&quot;</span><span class="p">,</span> <span class="n">scores</span><span class="p">)</span>
 </pre></div>
 
      </div>
@@ -14817,8 +14822,6 @@ memory usage: 17.2 MB
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
 <pre>Results Using Gini Index:
-Predicted values:
-[0 0 0 ... 0 0 0]
 Confusion Matrix:  [[14973  1254]
  [ 1293  3386]]
 Accuracy :  87.81689467138621
@@ -14831,9 +14834,11 @@ Report :                precision    recall  f1-score   support
    macro avg       0.83      0.82      0.82     20906
 weighted avg       0.88      0.88      0.88     20906
 
+0.87 accuracy with a standard deviation of 0.00
+Scores: [0.86559311 0.87866709 0.86702806 0.87404337 0.86670918 0.87324617
+ 0.87436224 0.87372449 0.87242864 0.87434221]
+
 Results Using Entropy:
-Predicted values:
-[0 1 0 ... 0 0 0]
 Confusion Matrix:  [[15004  1223]
  [ 1330  3349]]
 Accuracy :  87.78819477661915
@@ -14846,6 +14851,9 @@ Report :                precision    recall  f1-score   support
    macro avg       0.83      0.82      0.82     20906
 weighted avg       0.88      0.88      0.88     20906
 
+0.88 accuracy with a standard deviation of 0.00
+Scores: [0.87069515 0.87563776 0.87037628 0.87850765 0.87946429 0.87802934
+ 0.88456633 0.87802934 0.88406953 0.875299  ]
 </pre>
 </div>
 </div>
@@ -14945,6 +14953,7 @@ Best score is 0.7761647374749474
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Cross Validation Score</span>
 <span class="n">randomized_tree</span> <span class="o">=</span> <span class="n">DecisionTreeClassifier</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span> <span class="n">min_samples_split</span><span class="o">=</span> <span class="mi">23</span><span class="p">,</span> <span class="n">min_samples_leaf</span><span class="o">=</span> <span class="mi">42</span><span class="p">,</span> <span class="n">max_features</span><span class="o">=</span> <span class="s1">&#39;sqrt&#39;</span><span class="p">,</span> <span class="n">max_depth</span><span class="o">=</span> <span class="mi">2</span><span class="p">,</span> <span class="n">criterion</span><span class="o">=</span> <span class="s1">&#39;gini&#39;</span><span class="p">)</span>
+
 <span class="n">scores</span> <span class="o">=</span> <span class="n">cross_val_score</span><span class="p">(</span><span class="n">randomized_tree</span><span class="p">,</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%0.2f</span><span class="s2"> accuracy with a standard deviation of </span><span class="si">%0.2f</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">scores</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">scores</span><span class="o">.</span><span class="n">std</span><span class="p">()))</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Scores:&quot;</span><span class="p">,</span> <span class="n">scores</span><span class="p">)</span>
@@ -15112,8 +15121,7 @@ Best Score: 0.8272744666602888
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Classifier with best params</span>
 <span class="n">grid_tree</span> <span class="o">=</span> <span class="n">DecisionTreeClassifier</span><span class="p">(</span><span class="n">max_depth</span><span class="o">=</span><span class="mi">28</span><span class="p">,</span> <span class="n">max_features</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span><span class="p">,</span> <span class="n">min_samples_leaf</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">min_samples_split</span><span class="o">=</span><span class="mi">31</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
-<span class="c1"># Cross Validation Score</span>
-<span class="n">scores</span> <span class="o">=</span> <span class="n">cross_val_score</span><span class="p">(</span><span class="n">grid_tree</span><span class="p">,</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">scores</span> <span class="o">=</span> <span class="n">cross_val_score</span><span class="p">(</span><span class="n">randomized_tree</span><span class="p">,</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%0.2f</span><span class="s2"> accuracy with a standard deviation of </span><span class="si">%0.2f</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">scores</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">scores</span><span class="o">.</span><span class="n">std</span><span class="p">()))</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Scores:&quot;</span><span class="p">,</span> <span class="n">scores</span><span class="p">)</span>
 </pre></div>
@@ -15137,9 +15145,9 @@ Best Score: 0.8272744666602888
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>0.83 accuracy with a standard deviation of 0.00
-Scores: [0.82892219 0.83785077 0.82477679 0.82764668 0.83067602 0.8309949
- 0.82987883 0.82366071 0.82411099 0.83351937]
+<pre>0.78 accuracy with a standard deviation of 0.00
+Scores: [0.77614796 0.77614796 0.77614796 0.77614796 0.77614796 0.77614796
+ 0.77614796 0.77614796 0.77611226 0.77627173]
 </pre>
 </div>
 </div>
@@ -15427,7 +15435,6 @@ List of possible accuracy: [-241978.61, -180454.27, -175692.39, -210379.66, -235
 <span class="n">cal_accuracy</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred_money</span><span class="p">)</span>
 
 <span class="c1"># Cross Validation Score</span>
-<span class="n">money_tree</span> <span class="o">=</span> <span class="n">DecisionTreeClassifier</span><span class="p">(</span><span class="n">max_depth</span><span class="o">=</span><span class="mi">28</span><span class="p">,</span> <span class="n">max_features</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span><span class="p">,</span> <span class="n">min_samples_leaf</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">min_samples_split</span><span class="o">=</span><span class="mi">26</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
 <span class="n">scores</span> <span class="o">=</span> <span class="n">cross_val_score</span><span class="p">(</span><span class="n">grid_tree</span><span class="p">,</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%0.2f</span><span class="s2"> accuracy with a standard deviation of </span><span class="si">%0.2f</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">scores</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">scores</span><span class="o">.</span><span class="n">std</span><span class="p">()))</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Scores:&quot;</span><span class="p">,</span> <span class="n">scores</span><span class="p">)</span>
@@ -15452,9 +15459,7 @@ List of possible accuracy: [-241978.61, -180454.27, -175692.39, -210379.66, -235
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>Predicted values:
-[0 0 0 ... 0 0 0]
-Confusion Matrix:  [[15055  1172]
+<pre>Confusion Matrix:  [[15055  1172]
  [ 2242  2437]]
 Accuracy :  83.66975987754711
 Report :                precision    recall  f1-score   support
